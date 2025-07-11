@@ -59,7 +59,7 @@ const loginUser = async (req, res) => {
     }
 }
 
-module.exports = {
+export {
     registerUser,
     loginUser
 };
