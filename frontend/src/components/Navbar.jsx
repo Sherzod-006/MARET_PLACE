@@ -1,12 +1,12 @@
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCartShopping, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 
 
 const Navbar = () => {
   return (
     <div className='bg-primary'>
-      <div className="container mx-auto py-2 flex justify-between items-center">
+      <div className="container mx-auto py-2 flex justify-between items-center p-2">
         <Link to="/" className="flex items-center">
           <img src="./src/assets/Logo.png" alt="logo" className="h-12" />
           <h1 className="text-3xl font-bold hidden sm:block">
@@ -26,7 +26,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
-        <nav>
+        <nav className="hidden md:block">
           <ul className="flex space-x-5">
             <li>
               <Link to="/cart" className="text-white hover:text-secondary text-lg">
@@ -46,6 +46,11 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
+        <div className="md:hidden">
+          <button className='text-xl cursor-pointer'>
+          <FontAwesomeIcon icon={faBars} />
+          </button>
+        </div>
       </div>
     </div>
   )
