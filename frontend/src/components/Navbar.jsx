@@ -1,9 +1,11 @@
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCartShopping, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCartShopping, faUser, faBars, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 const Navbar = () => {
+  const [ Logged, setLogged ] = useState(false);
   return (
     <div className='bg-primary'>
       <div className="container mx-auto py-2 flex justify-between items-center p-2">
@@ -28,12 +30,12 @@ const Navbar = () => {
         </form>
         <nav className="hidden md:block">
           <ul className="flex space-x-5">
-            <li>
+            <li className={` ${Logged ? 'block' : 'hidden'}`} >
               <Link to="/cart" className="text-white hover:text-secondary text-lg">
               <FontAwesomeIcon icon={faCartShopping} />
               </Link>
             </li>
-            <li>
+            <li className={` ${Logged ? 'block' : 'hidden'}`} >
               <Link to="/profile" className="text-white hover:text-secondary text-lg">
                 <FontAwesomeIcon icon={faUser} />
               </Link>
@@ -43,6 +45,11 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/contact" className="text-white hover:text-secondary text-lg">Contact</Link>
+            </li>
+            <li>
+            <button className={` ${Logged ? 'hidden' : 'block'} text-white cursor-pointer hover:text-secondary bg-amber-600 px-3 py-1 rounded-xl`}>
+              <FontAwesomeIcon icon={faRightToBracket} /> LogIn
+            </button>
             </li>
           </ul>
         </nav>
