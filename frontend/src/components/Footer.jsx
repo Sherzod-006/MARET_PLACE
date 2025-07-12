@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-primary text-white py-4 mt-8">
       <div className="container mx-auto">
         <div className="flex justify-between">
-        <div className='flex flex-col items-center'>
+        <div className='flex-col items-center hidden md:flex'>
           <h1 className='text-2xl font-semibold'>Our Supporters</h1>
           <div className='flex space-x-4 mt-2'>
             <a href="https://www.alibaba.com" target="_blank" rel="noopener noreferrer" className=''>
@@ -21,7 +21,7 @@ const Footer = () => {
         </div>
         <div className='flex flex-col items-center'>
           <h1 className='text-2xl font-semibold'>Contact Details</h1>
-          <div className='flex space-x-4 mt-2'>
+          <div className='flex flex-col sm:flex-row sm:space-x-4 mt-2'>
             <a href="https://t.me/lion_o06" target="_blank" rel="noopener noreferrer" className=''>
               <h1>Telegram</h1>
             </a>
