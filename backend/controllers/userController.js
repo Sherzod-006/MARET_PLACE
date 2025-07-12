@@ -44,8 +44,8 @@ const loginUser = async (req, res) => {
     
     try {
         const user = await User.findOne({ email});
-        if (user && (await user.mathPassword(password))){
-            registerUser.status(200).json({
+        if (user && (await user.matchPassword(password))){
+            res.status(200).json({
                 _id: user._id,
                 username: user.username,
                 email: user.email,
