@@ -47,15 +47,17 @@ const Navbar = () => {
               <Link to="/contact" className="text-white hover:text-secondary text-lg">Contact</Link>
             </li>
             <li>
-            <button className={` ${Logged ? 'hidden' : 'block'} text-white cursor-pointer hover:text-secondary bg-amber-600 px-3 py-1 rounded-xl`}>
-              <FontAwesomeIcon icon={faRightToBracket} /> LogIn
-            </button>
+            <Link to="/login">
+              <button className={` ${Logged ? 'hidden' : 'block'} text-white cursor-pointer hover:text-secondary bg-amber-600 px-3 py-1 rounded-xl`}>
+                <FontAwesomeIcon icon={faRightToBracket} /> LogIn
+              </button>
+          </Link>
             </li>
           </ul>
         </nav>
         <div className="md:hidden">
           <button className='text-xl cursor-pointer'>
-          <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon icon={faBars} />
           </button>
         </div>
       </div>
