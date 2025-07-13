@@ -1,9 +1,9 @@
-import React from 'react'
+import Notification from "../components/Notification"
 
 const Login = () => {
   return (
     <div>
-      <h1>This is the Login Page</h1>
+      <Notification/>
     </div>
   )
 }

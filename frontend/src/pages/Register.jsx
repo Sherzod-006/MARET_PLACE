@@ -1,8 +1,9 @@
 import {Link, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
-import authServise from '../features/auth/authServise'
+import authService from '../features/auth/authService'
 
 const Register = () => {
+  const [errorData, setErrorData] = useState(false)
 
   const [formData, setFormData] = useState({
     username:'',
@@ -27,10 +28,11 @@ const Register = () => {
       username, email, password
     }
     try {
-      await authServise.register(userData);
+      await authService.register(userData);
       navigate('/login')
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.message);
+      setErrorData(true)
     }
   }
 
@@ -49,17 +51,17 @@ const Register = () => {
           </h1>
         </div>
       </div> 
-      <div className="border border-3 border-white shadow-xl/30 w-130 fixed right-90 bottom-30 p-3 rounded-2xl">
+      <div className={`border border-3 ${ errorData ? 'border-red-500' : ' border-white'} shadow-xl/30 w-130 fixed right-90 bottom-30 p-3 rounded-2xl`}>
         <h1 className="text-4xl font-mono font-bold text-white text-center">Register</h1>
         <form className="flex flex-col" onSubmit={onSubmit}>
           <label htmlFor="username" className="text-xl font-semibold text-cyan-700">UserName:</label>
-          <input required type="text" name="username" placeholder="Your username..." className="outline-none border border-white border-2 rounded-md p-1 font-bold w-50"
+          <input required type="text" name="username" placeholder="Your username..." className={`outline-none border ${ errorData ? 'border-red-500' : ' border-white'} border-2 rounded-md p-1 font-bold w-50`}
           onChange={onChange}/>
           <label htmlFor="email" className="text-xl font-semibold text-cyan-700">Email:</label>
-          <input required type="email" name="email" placeholder="Write your email..." className="outline-none border border-white border-2 rounded-md p-1 font-bold w-65"
+          <input required type="email" name="email" placeholder="Write your email..." className={`outline-none border ${ errorData ? 'border-red-500' : ' border-white'} border-2 rounded-md p-1 font-bold w-65`}
           onChange={onChange}/>
           <label htmlFor="password" className="text-xl font-semibold text-cyan-700">Password:</label>
-          <input required type="password" name="password" placeholder="Create a password..." className="outline-none border border-white border-2 rounded-md p-1 font-bold w-75"
+          <input required type="password" name="password" placeholder="Create a password..." className={`outline-none border ${ errorData ? 'border-red-500' : ' border-white'} border-2 rounded-md p-1 font-bold w-75`}
           onChange={onChange}/>
           <button type="submit" className="bg-cyan-600 text-2xl font-bold text-white rounded-3xl mt-3 py-1  hover:bg-amber-100 hover:text-cyan-600">SignUp</button>
         </form>
