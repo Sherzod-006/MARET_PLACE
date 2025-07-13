@@ -1,9 +1,8 @@
-import Notification from "../components/Notification"
 
 const Login = () => {
   return (
     <div>
-      <Notification/>
+      <h1>This is the Login Page</h1>
     </div>
   )
 }

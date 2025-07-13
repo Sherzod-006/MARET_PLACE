@@ -8,7 +8,7 @@ const Navbar = () => {
   const [ Logged, setLogged ] = useState(false);
   return (
     <div className='bg-primary'>
-      <div className="container mx-auto py-2 flex justify-between items-center p-2">
+      <div className="customContainer py-2 justify-between p-2">
         <Link to="/" className="flex items-center">
           <img src="./src/assets/Logo.png" alt="logo" className="h-12" />
           <h1 className="text-3xl font-bold hidden sm:block">

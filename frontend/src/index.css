@@ -5,3 +5,7 @@
     --color-secondary: #e6dfcd;
     --color-tertiary: #83918f;
   }
+
+.customContainer {
+  @apply container mx-auto flex items-center
+}
