@@ -2,6 +2,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 import authService from '../features/auth/authService'
 import Notification from '../components/Notification'
+import RegisterTemplate from '../components/RegisterTemplate';
 
 const Register = () => {
 
@@ -30,14 +31,11 @@ const Register = () => {
       await authService.register(userData);
       navigate('/login')
     } catch (error) {
-      console.log(error.response.data.message);
       setErrorData(error.response.data.message)
     }
   }
   // ----------------------------STYLES:
-  const logSpanStyle1 = "bg-gradient-to-r from-blue-800 via-red-600 to-amber-500 sm:text-transparent bg-clip-text"
-  const logSpanStyle2 = "bg-gradient-to-r from-amber-500 via-red-600 to-blue-600 sm:text-transparent bg-clip-text"
-  const customConStyle = "customContainer py-2 justify-center sm:justify-start md:justify-end p-2"
+
   const labelStyle = "text-xl font-semibold text-cyan-700"
   const inputStyle = `outline-none border ${ errorData ? 'border-red-500' : ' border-white'} border-2 rounded-md p-1 font-bold`
   const mainBoxStyle = `border-3 ${ errorData ? 'border-red-500' : ' border-white'} shadow-xl/30 w-130 fixed right-90 bottom-30 p-3 rounded-2xl`
@@ -53,20 +51,8 @@ const Register = () => {
 
   //--------------------------------------MAIN
   return (
-    <main className="
-    lg:bg-[url(/src/assets/pc.jpg)] 
-    sm:bg-[url(/src/assets/tablet.jpg)]
-    bg-[url(/src/assets/phone.jpg)]
-    bg-cover bg-center h-screen
-    ">
-      <div className={customConStyle}>
-        <div className="flex items-center">
-          <img src="./src/assets/Logo.png" alt="logo" className="md:h-30 h-15 pr-5" />
-          <h1 className="text-blue-600 md:text-7xl sm:text-5xl text-3xl font-bold">
-            <span class={logSpanStyle1}>Lion's</span> <span className={logSpanStyle2}>Company</span>
-          </h1>
-        </div>
-      </div> 
+    <>
+      <RegisterTemplate/>
       <div className={mainBoxStyle}>
         <h1 className="text-4xl font-mono font-bold text-white text-center">Register</h1>
         <form className="flex flex-col" onSubmit={onSubmit}>
@@ -83,7 +69,7 @@ const Register = () => {
         </div>
       </div>
       <Notification message={errorData}/>
-    </main>
+    </>
   )
 }
 
