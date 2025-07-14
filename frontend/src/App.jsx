@@ -12,8 +12,6 @@ import Contact from './pages/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
 
-
-
 const App = () => {
 
   const location = useLocation();

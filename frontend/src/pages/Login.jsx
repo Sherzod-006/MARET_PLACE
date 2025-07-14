@@ -29,7 +29,7 @@ const Login = () => {
     }
     try {
       await authService.login(userData);
-      navigate('/home')
+      navigate('/')
     } catch (error) {
       setErrorData(error.response.data.message)
     }
@@ -38,7 +38,7 @@ const Login = () => {
 
   const labelStyle = "text-xl font-semibold text-cyan-700"
   const inputStyle = `outline-none border ${ errorData ? 'border-red-500' : ' border-white'} border-2 rounded-md p-1 font-bold`
-  const mainBoxStyle = `border-3 ${ errorData ? 'border-red-500' : ' border-white'} shadow-xl/30 w-130 fixed right-90 bottom-50 p-3 rounded-2xl`
+  const mainBoxStyle = `border-3 ${ errorData ? 'border-red-500' : ' border-white'} shadow-xl/30 w-80 sm:w-130 fixed  right-1/10 sm:right-30 md:right-50 bottom-50 p-3 rounded-2xl`
   const buttonStyle = "bg-cyan-600 text-2xl font-bold text-white rounded-3xl mt-3 py-1  hover:bg-amber-100 hover:text-cyan-600"
 
   //-------------------------------------COMPONENTS
@@ -57,12 +57,12 @@ const Login = () => {
         <h1 className="text-4xl font-mono font-bold text-white text-center">Login</h1>
         <form className="flex flex-col" onSubmit={onSubmit}>
           {label('email', 'Email')}
-          {input('email', 'email', 'Write your email...', 'w-65')}
+          {input('email', 'email', 'Write your email...', 'sm:w-65')}
           {label('password', 'Password')}
-          {input('password', 'password', 'Create a password...', 'w-75')}
+          {input('password', 'password', 'Create a password...', 'sm:w-75')}
           <button type="submit" className={buttonStyle}>LogIn</button>
         </form>
-        <hr className="w-100 mx-auto border my-5 text-white" />
+        <hr className="md:w-100 mx-auto border my-5 text-white" />
         <div className='flex text-sm  font-bold'><p>Do not have an Account?</p> <Link to="/register"   className="text-cyan-700">SigUp</Link>
         </div>
       </div>

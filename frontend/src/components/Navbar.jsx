@@ -1,11 +1,10 @@
-import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCartShopping, faUser, faBars, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 const Navbar = () => {
-  const [ Logged, setLogged ] = useState(false);
+  const userDataFromStorage = localStorage.getItem('user')
   return (
     <div className='bg-primary'>
       <div className="customContainer py-2 justify-between p-2">
@@ -30,12 +29,12 @@ const Navbar = () => {
         </form>
         <nav className="hidden md:block">
           <ul className="flex space-x-5">
-            <li className={` ${Logged ? 'block' : 'hidden'}`} >
+            <li className={` ${userDataFromStorage ? 'block' : 'hidden'}`} >
               <Link to="/cart" className="text-white hover:text-secondary text-lg">
               <FontAwesomeIcon icon={faCartShopping} />
               </Link>
             </li>
-            <li className={` ${Logged ? 'block' : 'hidden'}`} >
+            <li className={` ${userDataFromStorage ? 'block' : 'hidden'}`} >
               <Link to="/profile" className="text-white hover:text-secondary text-lg">
                 <FontAwesomeIcon icon={faUser} />
               </Link>
@@ -48,7 +47,7 @@ const Navbar = () => {
             </li>
             <li>
             <Link to="/login">
-              <button className={` ${Logged ? 'hidden' : 'block'} text-white cursor-pointer hover:text-secondary bg-amber-600 px-3 py-1 rounded-xl`}>
+              <button className={` ${userDataFromStorage ? 'hidden' : 'block'} text-white cursor-pointer hover:text-secondary bg-amber-600 px-3 py-1 rounded-xl`}>
                 <FontAwesomeIcon icon={faRightToBracket} /> LogIn
               </button>
           </Link>
