@@ -15,6 +15,26 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
+    },
+    country:{
+        type: String,
+        default: null,
+        required: false,
+    },
+    city:{
+        type: String,
+        default: null,
+        required: false,
+    },
+    street:{
+        type: String,
+        default: null,
+        required: false,
+    },
+    homeNum:{
+        type: Number,
+        default: null,
+        required: false,
     }
 }, { timestamps: true });
 
