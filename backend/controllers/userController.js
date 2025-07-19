@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 // GENERATING TOKEN
 const generateToken = (id) =>{
     return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: '30d',
+        expiresIn: '1h',
     });
 }
 
@@ -57,9 +57,39 @@ const loginUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+};
+
+// UPDATE USER
+const updateUser = async (req, res) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.params.id,
+          { $set: req.body },
+          { new: true }
+        );
+    res.json(updatedUser);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+//DELETE USER
+const deleteUser = async (req, res) => {
+    try {
+      const deletedUser = await User.findByIdAndDelete(req.params.id);
+    if (!deletedUser) {
+      return res.status(404).json({ message: "Foydalanuvchi topilmadi" });
+    }
+    res.json({ message: "Profil muvaffaqiyatli o‘chirildi" });
+    } catch (err) {
+      res.status(500).json({ message: "Xatolik yuz berdi: " + err.message });
+    }
+
 }
 
 export {
     registerUser,
-    loginUser
+    loginUser,
+    updateUser,
+    deleteUser
 };
